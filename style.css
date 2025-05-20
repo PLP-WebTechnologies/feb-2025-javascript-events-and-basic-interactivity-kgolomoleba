@@ -4,9 +4,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f4f4f4;
     transition: background-color 0.3s ease;
 }
@@ -19,6 +19,7 @@ body {
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    margin-top: 40px;
 }
 
 button {
@@ -30,6 +31,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -58,6 +60,9 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInTask 0.3s forwards;
 }
 
 #taskList li.completed {
@@ -77,4 +82,76 @@ button:hover {
 .dark-mode .container {
     background-color: #34495e;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for new tasks */
+@keyframes fadeInTask {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tabs styling */
+.tabs-container {
+    margin-top: 40px;
+    text-align: left;
+    width: 400px;
+    max-width: 100%;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #bbb;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Dark mode tabs */
+.dark-mode .tab-button {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-mode .tab-button.active {
+    background-color: #2980b9;
+    color: white;
+}
+
+.dark-mode .tab-content {
+    background-color: #3a4a5a;
+    color: white;
+    border-color: #555;
 }
